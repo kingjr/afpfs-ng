@@ -15,17 +15,35 @@ Read NEWS for more details.
 
 
 ### Installation
+The command line tool needs ncurses-dev and libreadline-dev to compile. Install them
+with :
+
+```bash
+sudo apt-get install ncurses-dev libreadline-dev
+```
+on ubuntu/debian.
+
+Standard compiling tools are also necessary:
+
+```bash
+sudo apt-get install libgcrypt-dev libfuse-dev libgmp-dev libreadline-dev libncurses-dev
+```
 
 Pretty standard unix stuff:
 ```bash
-./configure && make && sudo make install && echo 'done!'
+./configure
+make
+sudo make install
 ```
 
-Use --disable-fuse and/or --disable-gcrypt if your system cannot meet those dependancies.
-(note that disabling gcrypt will prevent you from using login/password auth.)
+libafpclient.so.0 may be missing (see: https://askubuntu.com/questions/886656/how-can-i-mount-an-afp-share) but is actually somewhere else
+```bash
+sudo cp /usr/local/lib/libafpclient.so.0 /lib/x86_64-linux-gnu
+```
 
-The command line tool needs ncurses-dev and libreadline-dev to compile. Install them
-with sudo apt-get install ncurses-dev libreadline-dev on ubuntu/debian.
+```bash
+mount_afp afp://foo.bar.edu ~/Desktop/mount
+```
 
 ### Usage
 
